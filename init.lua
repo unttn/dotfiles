@@ -63,21 +63,26 @@ require("lazy").setup({
 	-- Utils
 	{ "NMAC427/guess-indent.nvim", config = true },
 	{ "yutkat/history-ignore.nvim", config = true },
---	{
---		"nvim-treesitter/nvim-treesitter",
---		build = ":TSUpdate",
---		config = function()
---			require("nvim-treesitter.configs").setup({
---				ensure_installed = "all",
---				highlight = {
---					enable = true,
---					additional_vim_regex_highlighting = false,
---				},
---				-- Enhance `vim-matchup`
---				matchup = { enable = true },
---			})
---		end,
---	},
+	{
+		"nvim-treesitter/nvim-treesitter",
+		build = ":TSUpdate",
+		config = function()
+			require("nvim-treesitter.configs").setup({
+				ensure_installed = {
+					"lua",
+					"go",
+					"json",
+					"python",
+					"javascript",
+				},
+				highlight = {
+					enable = true,
+					additional_vim_regex_highlighting = false,
+				},
+				matchup = { enable = true },
+			})
+		end,
+	},
 
 	-- Finder, file browser
 	{
@@ -107,11 +112,6 @@ require("lazy").setup({
 						},
 					},
 				},
-				pickers = {
-					find_files = {
-						theme = "dropdown"
-					}
-				}
 				extensions = {
 					file_browser = {
 						hijack_netrw = true,
@@ -218,6 +218,6 @@ require("lazy").setup({
 	},
 }, {
 	checker = {
-		enabled = true,
+		enabled = false,
 	},
 })
