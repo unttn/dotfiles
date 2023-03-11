@@ -100,6 +100,11 @@ require("lazy").setup({
 					builtin.find_files({ cwd = "%:p:h", no_ignore = false, hidden = true })
 				end,
 				{ silent = true, noremap = true })
+			vim.keymap.set("n", ";r",
+				function()
+					builtin.live_grep()
+				end,
+				{ silent = true, noremap = true })
 			vim.keymap.set("n", "<C-p>", ":Telescope git_files<CR>", { silent = true, noremap = true })
 		end,
 		config = function()
